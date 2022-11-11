@@ -1,0 +1,19 @@
+body {
+    background: linear-gradient(90deg, rgba(141, 194, 111, 1)0%, rgba(118, 184, 82, 1)50%);
+}
+
+.inner-row {
+    height: 100vh;
+}
+
+.primaryBg {
+    background-color: rgba(141, 194, 111, 1);
+}
+
+.primaryColor {
+    color: rgba(141, 194, 111, 1);
+}
+
+.form-box {
+    background: #fff;
+}
