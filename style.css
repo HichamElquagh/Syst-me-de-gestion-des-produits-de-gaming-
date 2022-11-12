@@ -1,5 +1,9 @@
 body {
-    background: linear-gradient(90deg, rgba(141, 194, 111, 1)0%, rgba(118, 184, 82, 1)50%);
+    font-family: 'Roboto';
+    /* background: linear-gradient(90deg, rgba(141, 194, 111, 1)0%, rgba(118, 184, 82, 1)50%); */
+
+
+    background: linear-gradient(to right, #e2dede, #e2dede);
 }
 
 .inner-row {
@@ -16,4 +20,12 @@ body {
 
 .form-box {
     background: #fff;
+}
+
+.form-box1 {
+    width: 100%;
+}
+
+.login-pic {
+    width: 50%;
 }
