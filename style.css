@@ -3,11 +3,34 @@ body {
     /* background: linear-gradient(90deg, rgba(141, 194, 111, 1)0%, rgba(118, 184, 82, 1)50%); */
 
 
-    background: linear-gradient(to right, #e2dede, #e2dede);
+    background: linear-gradient(to right, #e2dede, #e2dede); 
+    background-image: url(img/high-angle-controller-vr-glasses.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover ;
+    width:100%;
+    
 }
+/* dashboord  */
+.list{
+    list-style: none;
+    margin: 2rem 4rem;  
+    color:rgb(255, 255, 255); 
+}
+.list-li{
+    margin-bottom:2rem ;
+}
+/* dashboord  */
 
 .inner-row {
     height: 100vh;
+}
+
+.nav-brand{
+    color: rgba(141, 194, 111, 1);
+    font-size:larger;
+    margin:1rem;
+
 }
 
 .primaryBg {
@@ -19,13 +42,13 @@ body {
 }
 
 .form-box {
-    background: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px; 
+backdrop-filter: blur(5px);
+
 }
+
 
 .form-box1 {
     width: 100%;
-}
-
-.login-pic {
-    width: 50%;
 }
