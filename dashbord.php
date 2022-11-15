@@ -12,15 +12,17 @@
 </head>
 <body>
 
-<nav class="px-5 py-2 navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="col-10">
-            <a class=" text-success navbar-brand" href="#">ORIGIN  GAMES</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+
+
+<nav class="navbar navbar-light bg-light">
+  <!-- <a class="navbar-brand " href="#">Navbar</a> -->
+  <h5 class="mx-4 ">ORIGIN GAMER</h5>
+  <div class="">
+        <button  class="btn btn-success px-4 rounded-pill" id="btntask" data-bs-toggle="modal" data-bs-target="#modal" ><i class="fa fa-plus"></i> Add Tas </a>
+    </div>
+</nav>
+   
+
 
 <div class="d-flex">  
     <aside class="bg-dark vh-100 vw-20">
@@ -38,6 +40,10 @@
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Handle</th>
+                <th scope="col">description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Supprimer</th>
+                
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -46,22 +52,77 @@
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
+                <td>@mdo</td>
+                <td><i class=" fa-solid fa-edit text-success"></i></td>
+                <td><i class="fa-solid fa-trash text-danger "></i></td>
                 </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
 </div>
-    
+<!-- TASK MODAL -->
+<div class="modal fade" id="modal">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel" >Add task</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal" id="modalboton">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				<form action="scripts.php" method="POST" id="form">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label" id="Title"  >TITLE</label>
+							<input type="text" class="form-control" id="recipient-name" name="TITLE" >
+						</div>
+						<h6 class="form-title my-3" id="exampleModalLabel">Type</h6>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="TYPE" id="exampleRadios1" value="1">
+							<label class="form-check-label" for="exampleRadios1" >
+							Feature
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="TYPE" id="exampleRadios1" value="2" >
+							<label class="form-check-label" for="exampleRadios2">
+							Bug
+							</label>
+						</div>
+						<h6 class="modal-title mt-3 mb-1 " id="exampleModalLabel">Priority</h6>
+						<select class="form-select" id="Selectproprity" name="PRIORITY" aria-label="Default select example">
+							<option selected>Please select </option>
+							<option value="1">High</option>
+							<option value="2">Low</option>
+						</select>
+						<h6 class="modal-title my-2" id="exampleModalLabel">Status</h6>
+						<select class="form-select" id="selectstatus" name="STATUS" aria-label="Default select example">
+							<option selected>Please select </option>
+							<option value="1">To Do</option>
+							<option value="2">In Progress</option>
+							<option value="3">Done</option>
+						</select>
+						<div class="form-group">
+							<label for="recipient-name" class="col-form-label">Date</label>
+							<input type="date" class="form-control" id="date-task" name="DATETIME" placeholder="Please Select">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">Description</label>
+							<textarea class="form-control" id="message-text" name="DESCRIPTION"`require ></textarea>
+						</div>
+					</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+						<button type="submit"  name="save" class="btn btn-primary" data-bs-dismiss="modal" id="saveBtn" >Save</button>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>	
+
 </body>
+<script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
 </html>
