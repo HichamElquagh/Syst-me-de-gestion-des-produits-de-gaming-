@@ -14,19 +14,19 @@
 
 <body>
 
-    <h1 class="nav-brand" >ORIGIN GAMES</h1>
+    <h1 class="nav-brand" >ORIGIN GAMER</h1>
     <div class="d-flex justify-content-center"> 
         <div class=" row mx-4 form-box p-4 ">
             <div class=" col-lg-4 col-sm-12">
-                <form >
+                <form action="scripts.php" method="POST">
                     <h2 class="  fw-bold text-light mb-3">Login</h2>
                     <div class=" mb-3">
-                        <input type="email" class="form-control" id="flo" aria-describedby="emailHelp" placeholder="Email address">
+                        <input type="email" class="form-control" id="flo" aria-describedby="emailHelp" name="email" placeholder="Email address">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn login-btn text-light">Login</button>
+                    <button type="submit" class="btn login-btn text-light" name="login">Login</button>
                     <div class="mt-3">
                         <span class="text-light">Don't have account?</span> <button type="submit" name="click"
                         class="p-0 border-0 bg-transparent primaryColor ">Sign up </button>
@@ -38,6 +38,8 @@
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
+    <script src="js/scripts.js"></script>
+
 </body>
 
 </html>

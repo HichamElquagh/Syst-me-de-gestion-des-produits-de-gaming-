@@ -12,19 +12,65 @@
     <title>Document</title>
 </head>
 <body>
-<nav class=" px-5 py-2navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="col-10">
-            <a class="navbar-brand navbar" href="#">VEDIOS GAMES</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div style="
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            height: 100vh;">
+        <div style="
+                background: red;
+                padding: 10px 20px;
+                display: flex;">
+            nav
         </div>
-        <form class="d-flex" action="scripts.php" method="post">   
-        <div class=" col-1 collapse navbar-collapse">
-            <button type="submit" name="signclick" class="p-0 border-0 bg-transparent primaryColor ">Sign up </button>
+        <div style="
+                BACKGROUND: green;
+                height: 100%;
+                display: flex;
+                flex-direction: row;">
+            <div style="
+                display: flex;
+                background: yellow;
+                flex: 0.3;">
+                side
+            </div>
+            <div style="
+                display: flex;
+                flex: 1;
+                background: blue;">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
         </div>
-        <div class=" col-1 collapse navbar-collapse">
-            <button type="submit" name="loginclick" class="p-0 border-0 bg-transparent primaryColor ">Login </button>
-        </div>
-        </form>
+    </div>
+
+
+</body>
+</html>
