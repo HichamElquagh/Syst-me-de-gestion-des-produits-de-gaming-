@@ -1,27 +1,30 @@
 body {
     font-family: 'Roboto';
-    /* background-image: url(img/high-angle-controller-vr-glasses.jpg); */
+    background-image: url(img/high-angle-controller-vr-glasses.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size:cover ;
-    
+    background-size: cover;
+
 }
+
 /* dashboord  */
 
-#back-body{
+#back-body {
     background-color: rgb(255, 255, 255) !important;
 }
 
- .content-procuct{
-    display:flex ;
-} 
-.card-product{
+.content-procuct {
+    display: flex;
+}
+
+.card-product {
     height: 10rem;
     background: rgb(214, 208, 208);
     margin: 3rem 3rem;
 }
-.paragraph-product{
- text-align: end;
+
+.paragraph-product {
+    text-align: end;
 
 }
 
@@ -31,10 +34,10 @@ body {
     height: 100vh;
 }
 
-.nav-brand{
+.nav-brand {
     color: rgba(141, 194, 111, 1);
-    font-size:larger;
-    margin:1rem;
+    font-size: larger;
+    margin: 1rem;
 
 }
 
@@ -50,13 +53,13 @@ body {
     /* background-image: linear-gradient(rgba(0, 0, 0, 1),rgba(79, 83, 98, 1),rgba(79, 83, 98, 0)); */
     background: linear-gradient(180deg, #4F5362 0%, rgba(79, 83, 98, 0) 100%);
 
-  border-radius: 16px; 
-backdrop-filter: blur(5px);
- width: 70%;
- margin-top: 5rem;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    width: 70%;
+    margin-top: 5rem;
 
 }
-.login-btn{
-    background-color:#66A032;
-}
 
+.login-btn {
+    background-color: #66A032;
+}
