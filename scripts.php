@@ -7,8 +7,10 @@ if (isset($_POST['login']))
     login();
 if (isset($_POST['save']))
     saveproduct();
-if (isset($_POST['Update']))
+if (isset($_POST['update']))
     update();
+    if (isset($_POST['delete'])){
+    delete();}
 
 
 function signup()
@@ -18,10 +20,10 @@ function signup()
     $EMAIL = $_POST['EMAIL'];
     $PASSWORD = $_POST['PASSWORD'];
 
-    $sqll = "SELECT * FROM admin WHERE email='$EMAIL'";
+    $sqll = "SELECT * FROM users WHERE email='$EMAIL'";
 
 
-    $sql = " INSERT INTO admin (`username`,`email`,`password`)
+    $sql = " INSERT INTO users (`username`,`email`,`password`)
     VALUES ('$USERNAME','$EMAIL','$PASSWORD')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
@@ -37,7 +39,7 @@ function login()
     global $conn;
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $sql = "SELECT 'email' FROM admin WHERE email='$email'";
+    $sql = "SELECT 'email' FROM users WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         header('location: dashbord.php');
@@ -56,7 +58,7 @@ function saveproduct()
     $description = $_POST['DESCRIPTION'];
     $price = $_POST['PRICE'];
 
-    $sql = " INSERT INTO product (`name`,`category`,`description`,`price`)
+    $sql = " INSERT INTO products (`name`,`category_id`,`description`,`price`)
     VALUES ('$name',' $category',' $description',' $price')";
     $result = mysqli_query($conn, $sql);
     header('location: dashbord.php');
@@ -67,9 +69,9 @@ function display()
 {
 
     global $conn;
-    $sql = "SELECT product.name,product.category,product.description,product.price,category_id.name as names
-    FROM product 
-    INNER JOIN  category_id ON product.category = category_id.id";
+    $sql = "SELECT products.id,products.name,products.category_id,products.description,products.price,categories.name as names
+    FROM products 
+    INNER JOIN  categories ON products.category_id = categories.id";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         return $result;
@@ -80,11 +82,26 @@ function display()
 }
 
 
-function update()
-{
+function update() {
+    global $conn;
+     $id=$_POST['ID'];
+     $name=$_POST['NAME'];
+     $category=$_POST['CATEGORY'];
+     $description=$_POST['DESCRIPTION'];
+     $price=$_POST['PRICE'];
+     $sql="UPDATE products SET name = '$name', category_id = '$category', description = '$description', price = '$price'
+     WHERE id = '$id' "; 
+     $result=mysqli_query($conn,$sql);
+
+     header('location:dashbord.php');
+
 }
 function delete()
 {
+    global $conn;
+    $id=$_POST['delete'];
+    $sql=" DELETE FROM products WHERE id='$id' ";
+    $result=mysqli_query($conn,$sql);
 
 }
 ?>

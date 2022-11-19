@@ -5,14 +5,13 @@ include 'database.php';
 if (isset($_GET['Edit'])) {
     global $conn;
     $id = $_GET['Edit'];
-    print_r($id);
-    $sql = "SELECT * FROM  product WHERE product.id =$id";
+    $sql = "SELECT * FROM  products WHERE products.id =$id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
     $id = $row['id'];
     $name = $row['name'];
-    $category = $row['category'];
+    $category = $row['category_id'];
     $description = $row['description'];
     $price = $row['price'];
 ?>
@@ -34,19 +33,21 @@ if (isset($_GET['Edit'])) {
 
 <body>
     <!-- TASK MODAL -->
-    <div class="modal fade" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal"
-                        id="modalboton">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <form action="scripts.php" method="POST" id="form">
+    <!-- <div class="modal fade" id="modal">
+        <div class="modal-dialog" role="document"> -->
+            <!-- <div class="modal-content">
+            </div> -->
+       <!--  </div>
+    </div> -->
+    <div class="container">
+        <div class="col-10 mx-auto p-4 bg-light rounded">
+            
+        <form action="scripts.php" method="POST" id="form">
                     <div class="modal-body">
+                    <div class="form-group">
+                            <input type="hidden"  value="<?php echo $id ?>"
+                                name="ID">
+                        </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Name</label>
                             <input type="text" class="form-control" value="<?php echo $name ?>" id="recipient-name"
@@ -66,8 +67,8 @@ if (isset($_GET['Edit'])) {
 
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Description</label>
-                            <textarea class="form-control" value="<?php echo $description ?>" id="message-text"
-                                name="DESCRIPTION" `require></textarea>
+                            <textarea class="form-control" id="message-text"
+                                name="DESCRIPTION" `require> <?php echo $description ?></textarea>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Price</label>
@@ -75,15 +76,15 @@ if (isset($_GET['Edit'])) {
                                 name="PRICE">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <div class="modal-footer my-3">
+                        <button type="button"  class=" mx-2 btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" name="update" class="btn btn-primary" data-bs-dismiss="modal"
                             id="saveBtn">update</button>
                     </div>
                 </form>
-            </div>
         </div>
     </div>
+
 
     <?php } else
     header('location: index.php'); ?>

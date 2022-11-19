@@ -71,11 +71,12 @@ include 'scripts.php';
                     $row = display();
                     $conteur = 1;
                     while ($product = mysqli_fetch_assoc($row)) {
-                        $id = $product['id'];
+                       echo $product['id'];
                     ?>
                     <tr>
                         <th scope="row">
                             <?php echo $conteur ?>
+                            
                         </th>
                         <td>
                             <?php echo $product['name'] ?>
@@ -89,11 +90,14 @@ include 'scripts.php';
                         <td>
                             <?php echo $product['price'] ?>
                         </td>
-                        <td><a href="edit.php?Edit='<?php echo $product['price'] ?>'"><i
+                        <td><a href="edit.php?Edit"><i
                                     class="  fa-solid fa-edit text-success" data-bs-toggle="modal"
                                     data-bs-target="#modal"></i></a></td>
-                        <td><i class="fa-solid fa-trash text-danger "></i></td>
+                        <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}" class="fa-solid fa-trash text-danger "></i></td>
                     </tr>
+                    <form action="scripts.php" action="POST" id="hidden-form-<?php echo $product['id'] ?>">
+                        <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
+                    </form>
                     <?php
                         $conteur++;
                     }
