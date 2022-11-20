@@ -11,6 +11,7 @@ include 'scripts.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+
     <link rel="stylesheet" href="css\bootstrap.min.css">
     <link rel="stylesheet" href="css\all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -18,15 +19,16 @@ include 'scripts.php';
 </head>
 
 <body>
-    <nav class=" fixed-top w-100  navbar bg-dark ">
-        <div class="  container-fluid">
+    <nav class=" row fixed-top w-100  navbar bg-dark ">
+
+        <div class=" container-fluid">
             <a class="navbar-brand text-success" href="#">ORIGIN GAMER</a>
         </div>
+        <i class=" text-danger fa-regular fa-user"></i>
     </nav>
-    <!-- <div class="container-fluid"> -->
-    <div class="d-flex flex-nowrap mt-5">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark position-fixed">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+    <div class="d-flex flex-nowrap ">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">Menu</span>
                 </a>
@@ -45,68 +47,93 @@ include 'scripts.php';
 
             </div>
         </div>
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div>
+        <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div> -->
+        <div>
+            <div class=" container d-flex  "> #
+                <div class=" col-4 card bg-success ">
+                    <div class="card-body">
+                        <h5 class="card-title">product</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
 
-        <div class="col w-100 py-3 px-3 table-responsive">
-            <div class="mt-4">
-                <button class="btn btn-success px-4 rounded-pill" id="btntask" data-bs-toggle="modal"
-                    data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
+                    </div>
+                </div>
+
+                <div class=" mx-5 col-4 card  bg-success ">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the
+                            card's content.</p>
+                    </div>
+                </div>
             </div>
-            <table class="table bg-light">
-                <thead class="bg-dark">
-                    <tr class="text-light">
-                        <th scope="col">#</th>
-                        <th scope="col">Product </th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
 
-                    </tr>
-                </thead>
-                </php>
-                <tbody class="table-group-divider">
-                    <?php
-                    $row = display();
-                    $conteur = 1;
-                    while ($product = mysqli_fetch_assoc($row)) {
-                       echo $product['id'];
-                    ?>
-                    <tr>
-                        <th scope="row">
-                            <?php echo $conteur ?>
-                            
-                        </th>
-                        <td>
-                            <?php echo $product['name'] ?>
-                        </td>
-                        <td>
-                            <?php echo $product['names'] ?>
-                        </td>
-                        <td>
-                            <?php echo $product['description'] ?>
-                        </td>
-                        <td>
-                            <?php echo $product['price'] ?>
-                        </td>
-                        <td><a href="edit.php?Edit"><i
-                                    class="  fa-solid fa-edit text-success" data-bs-toggle="modal"
-                                    data-bs-target="#modal"></i></a></td>
-                        <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}" class="fa-solid fa-trash text-danger "></i></td>
-                    </tr>
-                    <form action="scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
-                        <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
-                    </form>
-                    <?php
-                        $conteur++;
-                    }
-                    ?>
 
-                </tbody>
-            </table>
+
+            <div class="col w-100 py-3 px-3 table-responsive">
+                <div class="mt-4">
+                    <button class="btn btn-success px-4 rounded-pill" id="btntask" data-bs-toggle="modal"
+                        data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
+                </div>
+                <table class="table bg-light">
+                    <thead class="bg-dark">
+                        <tr class="text-light">
+                            <th scope="col">#</th>
+                            <th scope="col">Product </th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+
+                        </tr>
+                    </thead>
+                    </php>
+                    <tbody class="table-group-divider">
+                        <?php
+                        $row = display();
+                        $conteur = 1;
+                        while ($product = mysqli_fetch_assoc($row)) {
+                            echo $product['id'];
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $conteur ?>
+
+                            </th>
+                            <td>
+                                <?php echo $product['name'] ?>
+                            </td>
+                            <td>
+                                <?php echo $product['names'] ?>
+                            </td>
+                            <td>
+                                <?php echo $product['description'] ?>
+                            </td>
+                            <td>
+                                <?php echo $product['price'] ?>
+                            </td>
+                            <td><a href="edit.php?Edit"><i class="  fa-solid fa-edit text-success"
+                                        data-bs-toggle="modal" data-bs-target="#modal"></i></a></td>
+                            <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}"
+                                    class="fa-solid fa-trash text-danger "></i></td>
+                        </tr>
+                        <form action="scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
+                            <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
+                        </form>
+                        <?php
+                            $conteur++;
+                        }
+                        ?>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-
     </div>
     <!-- TASK MODAL -->
     <div class="modal fade" id="modal">
