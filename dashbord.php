@@ -19,19 +19,32 @@ include 'scripts.php';
 </head>
 
 <body>
-    <nav class=" row fixed-top w-100  navbar bg-dark ">
 
-        <div class=" container-fluid">
-            <a class="navbar-brand text-success" href="#">ORIGIN GAMER</a>
+    <nav class=" d-flex  justify-content-between  ">
+        <div>
+            <h1 class=" ms-3 text-success"> ORIGIN GAMER </h1>
         </div>
-        <i class=" text-danger fa-regular fa-user"></i>
+        <?php if (isset($_SESSION['username'])) {
+            echo '
+                <div class=" text-danger"> <i class=" me-4 mt-3 fs-2 text-success  fa-solid fa-user"></i>
+                 ' . $_SESSION['username'] . ' </div> ';
+        }
+
+        ?>
+
+
     </nav>
-    <div class="d-flex flex-nowrap ">
+
+    <div class="d-flex flex-nowrap">
+
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
+
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
+
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">Menu</span>
                 </a>
+
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="#" class="nav-link align-middle px-0">
@@ -42,15 +55,17 @@ include 'scripts.php';
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                             <i class="fa-brands fa-stripe-s"></i></i> <span
-                                class="ms-1 d-none d-sm-inline text-light">Statistique</span> </a>
+                                class="ms-1 d-none d-sm-inline text-light">Statistique</span>
+                        </a>
                     </li>
-
+                </ul>
             </div>
         </div>
+
         <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div> -->
-        <div>
-            <div class=" container d-flex  "> #
-                <div class=" col-4 card bg-success ">
+        <div class="re-div">
+            <div class=" container d-flex  ">
+                <div class="cart col-4 card bg-success ">
                     <div class="card-body">
                         <h5 class="card-title">product</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -61,7 +76,7 @@ include 'scripts.php';
                     </div>
                 </div>
 
-                <div class=" mx-5 col-4 card  bg-success ">
+                <div class="cart mx-5 col-4 card  bg-success ">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -76,7 +91,7 @@ include 'scripts.php';
 
             <div class="col w-100 py-3 px-3 table-responsive">
                 <div class="mt-4">
-                    <button class="btn btn-success px-4 rounded-pill" id="btntask" data-bs-toggle="modal"
+                    <button class="btn btn-success px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
                         data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
                 </div>
                 <table class="table bg-light">
