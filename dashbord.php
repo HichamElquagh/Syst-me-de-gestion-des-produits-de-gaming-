@@ -95,7 +95,7 @@ include 'scripts.php';
                                     data-bs-target="#modal"></i></a></td>
                         <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}" class="fa-solid fa-trash text-danger "></i></td>
                     </tr>
-                    <form action="scripts.php" action="POST" id="hidden-form-<?php echo $product['id'] ?>">
+                    <form action="scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
                         <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
                     </form>
                     <?php

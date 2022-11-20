@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "database.php";
 
 if (isset($_POST['signup']))
@@ -9,28 +10,42 @@ if (isset($_POST['save']))
     saveproduct();
 if (isset($_POST['update']))
     update();
-    if (isset($_POST['delete'])){
-    delete();}
+    if (isset($_POST['delete']))
+    delete();
+
 
 
 function signup()
 {
     global $conn;
-    $USERNAME = $_POST['USERNAME'];
+    $USERNAME = htmlspecialchars(trim($_POST['USERNAME']));
     $EMAIL = $_POST['EMAIL'];
-    $PASSWORD = $_POST['PASSWORD'];
+    $PASSWORD = htmlspecialchars(trim($_POST['PASSWORD']));
+    if(isset($USERNAME) && isset($EMAIL) && isset($PASSWORD)){  
 
-    $sqll = "SELECT * FROM users WHERE email='$EMAIL'";
+    $sqll = "SELECT * FROM users WHERE email='$EMAIL' ";
+    $result=mysqli_query($conn,$sqll);
+    $numEmail=mysqli_num_rows($result);
+   
 
-
-    $sql = " INSERT INTO users (`username`,`email`,`password`)
-    VALUES ('$USERNAME','$EMAIL','$PASSWORD')";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        header('location: login.php');
-    } else {
-        header('location: singup.php');
+        if($numEmail == 0){  
+        $sql = " INSERT INTO users (`username`,`email`,`password`)
+        VALUES ('$USERNAME','$EMAIL','$PASSWORD')";
+        $result = mysqli_query($conn, $sql);
+        $_SESSION['message'] = "your account has beeen created successfully";
+        header ('location: login.php');
+        }
+        else{
+            $_SESSION['message'] = 'this email is already exis';
+            header ('location: signup.php');
+        }
     }
+    else{
+        $_SESSION['message']='check your informations';
+        header ('location: signup.php');
+    }   
+
+   
 
 }
 function login()
@@ -38,15 +53,31 @@ function login()
 
     global $conn;
     $email = $_POST['email'];
-    $password = $_POST['password'];
-    $sql = "SELECT 'email' FROM users WHERE email='$email'";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        header('location: dashbord.php');
-    } else {
+    $password = htmlspecialchars(trim($_POST['password'])); 
 
-    }
-
+      if (isset($email) && isset($email) ){   
+        $sql = "SELECT * FROM users WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        // $emailchechek=mysqli_num_rows($result);
+        $row =mysqli_fetch_assoc($result);
+        $username=$row['username'];
+        $emailuser=$row['email'];
+        $passworduser=$row['password'];
+   
+        if( $emailuser == $email && $passworduser == $password ) { 
+        $_SESSION['message']= $username ;
+        header('location: dashbord.php'); 
+        }
+        else {
+        $_SESSION['message']='check your informations';
+        header('location: login.php'); 
+        }
+    }    
+        // else{
+        // $_SESSION['rempliData']='';
+        // header('location: login.php'); 
+        // }
+    
 }
 
 function saveproduct()
@@ -102,6 +133,43 @@ function delete()
     $id=$_POST['delete'];
     $sql=" DELETE FROM products WHERE id='$id' ";
     $result=mysqli_query($conn,$sql);
-
+    header('location:dashbord.php');
 }
+
+
+
+
+// function signUp(){
+//     global $conn;
+
+//     $username =htmlspecialchars(trim($_POST['userName']));
+//     // Remove all illegal characters from email
+//     $email =filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
+//     // $email =htmlspecialchars(trim($_POST['email']));
+//     // $password = $_POST['password'];
+//     // $password =htmlspecialchars(trim(password_hash($_POST['password'], PASSWORD_BCRYPT)));
+//     $password =htmlspecialchars(trim(md5($_POST['password'])));
+//     $passwordCheck =$_POST['passwordCheck'];
+
+//     if(!empty($username) && !empty($password) && !empty($email) && !is_numeric($username))
+//     {
+//     $sql = "SELECT * FROM admins WHERE email='$email'";
+//     $result = mysqli_query($conn,$sql);
+//     $numEmail = mysqli_num_rows($result);
+
+//     if($numEmail == 0){
+//         $sql = "INSERT INTO admins (name,email,password) VALUES ('$username','$email','$password')";
+//         $result = mysqli_query($conn,$sql);
+
+//         $_SESSION['accountCreated'] = 'your account has beeen created successfully';
+//         header('location: .././pages/login.php');
+//     }else{
+//         $_SESSION['emailExist'] = 'this email is already exist';
+//         header('location: .././pages/signup.php');
+//     }
+// }else{
+//     $_SESSION['wrongData']='check your informations';
+//     header('location: .././pages/signup.php');
+// }
+// }
 ?>

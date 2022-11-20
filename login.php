@@ -1,3 +1,7 @@
+<?php
+    include 'scripts.php';
+   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +19,17 @@
 <body>
 
     <h1 class="nav-brand" >ORIGIN GAMER</h1>
+    <?php
+    if(isset($_SESSION['message'])){  
+        echo ' 
+        <div class=" alert alert-success mx-auto w-50   "> '.$_SESSION['message'].' </div> ';
+        unset($_SESSION['message']);
+    }
+    if(isset ($_SESSION['message'])){
+        echo '<div class="alert alert-danger mx-auto w-50 ">'.$_SESSION['message'].' </div>';
+        unset($_SESSION['message']);
+    }
+?>
     <div class="d-flex justify-content-center"> 
         <div class=" row mx-4 form-box p-4 ">
             <div class=" col-lg-4 col-sm-12">

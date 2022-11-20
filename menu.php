@@ -17,12 +17,19 @@
             flex: 1;
             flex-direction: column;
             height: 100vh;">
-        <div style="
+          <!-- <div   style="
                 background: red;
                 padding: 10px 20px;
                 display: flex;">
-            nav
-        </div>
+            nav -->
+          <!-- ////////////////////////////////////// -->
+                    <nav class="navbar bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+          </div>
+        </nav>   
+          <!-- ///////////////////////// -->
+        
         <div style="
                 BACKGROUND: green;
                 height: 100%;

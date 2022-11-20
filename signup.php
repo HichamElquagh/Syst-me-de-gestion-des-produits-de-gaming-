@@ -1,6 +1,5 @@
 <?php
 include 'scripts.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +16,14 @@ include 'scripts.php';
 </head>
 
 <body>
+    <?php
+    if(isset($_SESSION['message'])){
+        echo '<div class="alert alert-danger mx-auto w-50 " > '.$_SESSION['message'].' </div>';
+        unset($_SESSION['message']);
+
+    }
+    
+    ?>
     <h1 class="nav-brand">ORIGIN GAMER</h1>
     <div class="d-flex justify-content-center">
         <div class=" row mx-4 form-box p-4 ">
