@@ -1,12 +1,12 @@
 <?php
-// include 'dashbord.php';
-include 'database.php';
+include '../scripts.php';
+include '../database.php';
 
 if (isset($_GET['Edit'])) {
     global $conn;
     $id = $_GET['Edit'];
     $sql = "SELECT * FROM  products WHERE products.id =$id";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
 
     $id = $row['id'];
@@ -25,9 +25,9 @@ if (isset($_GET['Edit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="css\bootstrap.min.css">
-    <link rel="stylesheet" href="css\all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Document</title>
 </head>
 
@@ -42,7 +42,7 @@ if (isset($_GET['Edit'])) {
     <div class="container">
         <div class="col-10 mx-auto p-4 bg-light rounded">
             
-        <form action="scripts.php" method="POST" id="form">
+        <form action="../scripts.php" method="POST" id="form">
                     <div class="modal-body">
                     <div class="form-group">
                             <input type="hidden"  value="<?php echo $id ?>"
@@ -86,8 +86,9 @@ if (isset($_GET['Edit'])) {
     </div>
 
 
-    <?php } else
-    header('location: index.php'); ?>
+    <?php }
+    //  else
+    // header('location:dashbord.php'); ?>
 </body>
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/all.min.js"></script>

@@ -1,5 +1,5 @@
 <?php
-include 'scripts.php';
+include ('../scripts.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,32 +12,32 @@ include 'scripts.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 
-    <link rel="stylesheet" href="css\bootstrap.min.css">
-    <link rel="stylesheet" href="css\all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css"> 
     <title>Document</title>
 </head>
 
 <body>
-
-    <nav class=" d-flex  justify-content-between  ">
+    
+    <nav class=" d-flex  justify-content-between   ">
         <div>
-            <h1 class=" ms-3 text-success"> ORIGIN GAMER </h1>
+            <h4 class=" ms-3 text-light"> ORIGIN GAMER </h4>
         </div>
         <?php if (isset($_SESSION['username'])) {
             echo '
-                <div class=" text-danger"> <i class=" me-4 mt-3 fs-2 text-success  fa-solid fa-user"></i>
+                <div class=" text-light"> <i class=" me-3 fs-4 text-light  fa-solid fa-user"></i>
                  ' . $_SESSION['username'] . ' </div> ';
         }
 
         ?>
 
-
     </nav>
 
-    <div class="d-flex flex-nowrap">
 
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
+    <div class="d-flex flex-nowrap ">
+
+          <div class="  col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
 
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
 
@@ -47,57 +47,41 @@ include 'scripts.php';
 
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="dashbord.php" class="nav-link align-middle px-0">
                             <i class="fa-brands fa-product-hunt"></i> <span
                                 class="ms-1 d-none d-sm-inline text-light">product</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <a href="statistique.php"  class="nav-link px-0 align-middle">
                             <i class="fa-brands fa-stripe-s"></i></i> <span
                                 class="ms-1 d-none d-sm-inline text-light">Statistique</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fa-solid fa-right-from-bracket "></i></i> <span
+                                class="ms-1 d-none d-sm-inline text-light">Logout </span>
+                        </a>
+                    </li>
                 </ul>
+            
             </div>
         </div>
 
         <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div> -->
-        <div class="re-div">
-            <div class=" container d-flex  ">
-                <div class="cart col-4 card bg-success ">
-                    <div class="card-body">
-                        <h5 class="card-title">product</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-
-                    </div>
-                </div>
-
-                <div class="cart mx-5 col-4 card  bg-success ">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-            </div>
-
 
 
             <div class="col w-100 py-3 px-3 table-responsive">
                 <div class="mt-4">
-                    <button class="btn btn-success px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
+                    <button class="btn btn-dark px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
                         data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
                 </div>
-                <table class="table bg-light">
+                <table class=" my-3 table bg-light">
                     <thead class="bg-dark">
                         <tr class="text-light">
                             <th scope="col">#</th>
+                            <th scope="col">image</th>
                             <th scope="col">Product </th>
                             <th scope="col">Category</th>
                             <th scope="col">Description</th>
@@ -113,13 +97,16 @@ include 'scripts.php';
                         $row = display();
                         $conteur = 1;
                         while ($product = mysqli_fetch_assoc($row)) {
-                            echo $product['id'];
+                        
                         ?>
                         <tr>
                             <th scope="row">
                                 <?php echo $conteur ?>
 
                             </th>
+                            <td>
+                               
+                            </td>
                             <td>
                                 <?php echo $product['name'] ?>
                             </td>
@@ -130,14 +117,14 @@ include 'scripts.php';
                                 <?php echo $product['description'] ?>
                             </td>
                             <td>
-                                <?php echo $product['price'] ?>
+                                <?php echo $product['price'] ?>$
                             </td>
-                            <td><a href="edit.php?Edit"><i class="  fa-solid fa-edit text-success"
+                            <td><a href="edit.php?Edit=<?php echo $product['id'] ?>"><i class="  fa-solid fa-edit text-success"
                                         data-bs-toggle="modal" data-bs-target="#modal"></i></a></td>
                             <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}"
                                     class="fa-solid fa-trash text-danger "></i></td>
                         </tr>
-                        <form action="scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
+                        <form action="../scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
                             <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
                         </form>
                         <?php
@@ -149,7 +136,7 @@ include 'scripts.php';
                 </table>
             </div>
         </div>
-    </div>
+    
     <!-- TASK MODAL -->
     <div class="modal fade" id="modal">
         <div class="modal-dialog" role="document">
@@ -162,7 +149,7 @@ include 'scripts.php';
                     </button>
                 </div>
 
-                <form action="scripts.php" method="POST" id="form">
+                <form action="" method="POST" id="form">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Name</label>
@@ -182,8 +169,12 @@ include 'scripts.php';
                             <textarea class="form-control" id="message-text" name="DESCRIPTION" `require></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="image" class="col-form-label" id="image">image</label>
+                            <input type="file" class="form-control" id="images" name="IMAGE">
+                        </div>
+                        <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Price</label>
-                            <input type="text" class="form-control" id="recipient-name" name="PRICE">
+                            <input type="number" class="form-control" id="recipient-name" step="any" name="PRICE">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -197,8 +188,8 @@ include 'scripts.php';
     </div>
 
 </body>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/all.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="..\assets\js\bootstrap.bundle.min.js"></script>
+<script src="..\assets\js\all.min.js"></script>
+<script src="..\assets\js\scripts.js"></script>
 
 </html>
