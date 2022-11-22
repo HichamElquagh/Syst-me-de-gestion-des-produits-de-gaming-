@@ -1,141 +1,109 @@
 <?php
-include ('../scripts.php');
+$title='Dashboard';
+include '../navbar.php';
+ $title="Statistique";
+
+
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="../assets/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css"> 
-    <title>Document</title>
-</head>
-
-<body>
-    
-    <nav class=" d-flex  justify-content-between   ">
-        <div>
-            <h4 class=" ms-3 text-light"> ORIGIN GAMER </h4>
-        </div>
-        <?php if (isset($_SESSION['username'])) {
-            echo '
-                <div class=" text-light"> <i class=" me-3 fs-4 text-light  fa-solid fa-user"></i>
-                 ' . $_SESSION['username'] . ' </div> ';
-        }
-
-        ?>
-
-    </nav>
-
-
+      
     <div class="d-flex flex-nowrap ">
-
           <div class="  col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark ">
-
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white vh-100">
-
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <span class="fs-5 d-none d-sm-inline">Menu</span>
                 </a>
-
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="dashbord.php" class="nav-link align-middle px-0">
                             <i class="fa-brands fa-product-hunt"></i> <span
-                                class="ms-1 d-none d-sm-inline text-light">product</span>
+                                class=" side-h ms-1 d-none d-sm-inline text-light">product</span>
                         </a>
                     </li>
                     <li>
                         <a href="statistique.php"  class="nav-link px-0 align-middle">
                             <i class="fa-brands fa-stripe-s"></i></i> <span
-                                class="ms-1 d-none d-sm-inline text-light">Statistique</span>
+                                class="side-h ms-1 d-none d-sm-inline text-light">Statistique</span>
                         </a>
-                    </li>
+                    </li>   
                     <li>
-                        <a href="" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <a href="logout.php" class="nav-link px-0 align-middle">
                             <i class="fa-solid fa-right-from-bracket "></i></i> <span
-                                class="ms-1 d-none d-sm-inline text-light">Logout </span>
+                                class=" side-h ms-1 d-none d-sm-inline text-light">Logout </span>
                         </a>
                     </li>
                 </ul>
-            
             </div>
         </div>
-
-        <!-- <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"></div> -->
-
-
-            <div class="col w-100 py-3 px-3 table-responsive">
-                <div class="mt-4">
-                    <button class="btn btn-dark px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
-                        data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
-                </div>
-                <table class=" my-3 table bg-light">
-                    <thead class="bg-dark">
-                        <tr class="text-light">
-                            <th scope="col">#</th>
-                            <th scope="col">image</th>
-                            <th scope="col">Product </th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-
-                        </tr>
-                    </thead>
-                    </php>
-                    <tbody class="table-group-divider">
-                        <?php
-                        $row = display();
-                        $conteur = 1;
-                        while ($product = mysqli_fetch_assoc($row)) {
-                        
-                        ?>
-                        <tr>
-                            <th scope="row">
-                                <?php echo $conteur ?>
-
-                            </th>
-                            <td>
-                               
-                            </td>
-                            <td>
-                                <?php echo $product['name'] ?>
-                            </td>
-                            <td>
-                                <?php echo $product['names'] ?>
-                            </td>
-                            <td>
-                                <?php echo $product['description'] ?>
-                            </td>
-                            <td>
-                                <?php echo $product['price'] ?>$
-                            </td>
-                            <td><a href="edit.php?Edit=<?php echo $product['id'] ?>"><i class="  fa-solid fa-edit text-success"
-                                        data-bs-toggle="modal" data-bs-target="#modal"></i></a></td>
-                            <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}"
-                                    class="fa-solid fa-trash text-danger "></i></td>
-                        </tr>
-                        <form action="../scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
-                            <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
-                        </form>
-                        <?php
-                            $conteur++;
-                        }
-                        ?>
-
-                    </tbody>
-                </table>
+        <div class="col w-100 py-3 px-3 table-responsive">
+            <div class="d-felx justify-content-end mt-4">
+                <button class="btn btn-dark px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
+                data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
             </div>
+            <table class=" my-3 table bg-light">
+                <thead class="bg-dark">
+                    <tr class="text-light">
+                        <th scope="col">#</th>
+                        <th scope="col">image</th>
+                        <th scope="col">Product </th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+
+                    </tr>
+                </thead>
+                </php>
+                <tbody class="table-group-divider">
+                    <?php
+                    $row = display();
+                    $conteur = 1;
+                    while ($product = mysqli_fetch_assoc($row)) {
+                    
+                    ?>
+                    <tr>
+                        <th scope="row">
+                            <?php echo $conteur ?>
+
+                        </th>
+                        <td>
+                            <img class="image" src=" image/<?php echo $product['image']?>" alt="image" >
+                        </td>
+                        <td>
+                            <?php echo $product['name'] ?>
+                        </td>
+                        <td>
+                            <?php echo $product['names'] ?>
+                        </td>
+                        <td>
+                            <?php echo $product['description'] ?>
+                        </td>
+                        <td>
+                            <?php echo $product['quantite'] ?>
+                        </td>
+                        <td>
+                            <?php echo $product['price'] ?>$
+                        </td>
+                        <td><a href="edit.php?Edit=<?php echo $product['id'] ?>"><i class="  fa-solid fa-edit text-success"
+                                    data-bs-toggle="modal" data-bs-target="#modal"></i></a></td>
+                        <td><i onclick="if(confirm('Are You sure to delete this !!')){document.querySelector('#hidden-form-<?php echo $product['id'] ?>').submit();} else {return false}"
+                                class="fa-solid fa-trash text-danger "></i></td>
+                    </tr>
+                    <form action="../scripts.php" method="POST" id="hidden-form-<?php echo $product['id'] ?>">
+                        <input type="hidden" name="delete" value="<?php echo $product['id'] ?>">
+                    </form>
+                    <?php
+                        $conteur++;
+                    }
+                    ?>
+
+                </tbody>    
+            </table>           
         </div>
+    </div>
     
     <!-- TASK MODAL -->
     <div class="modal fade" id="modal">
@@ -149,7 +117,7 @@ include ('../scripts.php');
                     </button>
                 </div>
 
-                <form action="" method="POST" id="form">
+                <form action="" method="POST" id="form" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Name</label>
@@ -159,9 +127,10 @@ include ('../scripts.php');
                         <select class="form-select" id="selectstatus" name="CATEGORY"
                             aria-label="Default select example">
                             <option selected>Category </option>
-                            <option value="1">casque gamer </option>
+                            <option value="1  ">casque gamer </option>
                             <option value="2">console</option>
                             <option value="3">chaise gamer</option>
+                            <option value="4">accessoires</option>
                         </select>
 
                         <div class="form-group">
@@ -172,6 +141,12 @@ include ('../scripts.php');
                             <label for="image" class="col-form-label" id="image">image</label>
                             <input type="file" class="form-control" id="images" name="IMAGE">
                         </div>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label" id="Title">Quantité</label>
+                            <input type="number" class="form-control" id="recipient-name" name="QUANTITE">
+                        </div>
+
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label" id="Title">Price</label>
                             <input type="number" class="form-control" id="recipient-name" step="any" name="PRICE">
@@ -187,9 +162,3 @@ include ('../scripts.php');
         </div>
     </div>
 
-</body>
-<script src="..\assets\js\bootstrap.bundle.min.js"></script>
-<script src="..\assets\js\all.min.js"></script>
-<script src="..\assets\js\scripts.js"></script>
-
-</html>

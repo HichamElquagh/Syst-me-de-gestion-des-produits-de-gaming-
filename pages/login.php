@@ -44,8 +44,11 @@ include '../scripts.php';
                     </div>
                     <div class="mb-3">
                         <input type="password" class="form-control" id="exampleInputPassword1" name="password"
-                            placeholder="Password"     placeholder="Password"
-                                data-parsley-required required/>
+                            placeholder="Password"   placeholder="Password"
+                            data-parsley-minlength="3"
+                        data-parsley-errors-container=".errorspannewpassinput"
+                        data-parsley-required-message="Please enter your  password."
+                        data-parsley-required/>
                     </div>
                     <button type="submit" class="btn login-btn text-light" name="login">Login</button>
                     <div class="mt-3">
