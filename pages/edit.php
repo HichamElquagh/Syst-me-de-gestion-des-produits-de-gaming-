@@ -17,16 +17,18 @@ if (isset($_GET['Edit'])) {
     $description = $row['description'];
     $quantite=  $row['quantite'];
     $price = $row['price'];
+    $image =$row['image'];    
 ?>
   
     <div class="container my-3">
         <div class="col-10 mx-auto p-4 bg-light rounded">
-            <form action="../scripts.php" method="POST" id="form">
+            <form action="../scripts.php" method="POST" id="form " enctype="multipart/form-data" >
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="hidden"  value="<?php echo $id ?>"
                             name="ID">
                     </div>
+                    <img src="image/<?php echo $image ?> " style="width:100px;" alt="image" >
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label" id="Title">Name</label>
                         <input type="text" class="form-control" value="<?php echo $name ?>" id="recipient-name"
@@ -45,6 +47,11 @@ if (isset($_GET['Edit'])) {
                         <textarea class="form-control" id="message-text"
                             name="DESCRIPTION" `require> <?php echo $description ?></textarea>
                     </div>
+                    <div class="form-group">
+                       
+                            <label for="image" class="col-form-label" id="image">image</label>
+                            <input type="file"  class="form-control" id="images" name="image">
+                        </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label" id="Title">Quantité</label>
                         <input type="number" value="<?php echo $quantite ?>"  class="form-control" id="recipient-name" name="QUANTITE">

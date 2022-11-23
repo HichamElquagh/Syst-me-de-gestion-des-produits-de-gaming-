@@ -13,10 +13,7 @@ body {
 }
 
 
-
 /* dashboord  */
-
-  
 .nav-brand {
     color: rgb(255, 255, 255);
     font-size: larger;
@@ -24,16 +21,12 @@ body {
 
 }
 
-/* .primaryBg {
-    background-color: rgba(141, 194, 111, 1);
-} */
 /* for signup   */
 .primaryColor {
     color: rgba(141, 194, 111, 1);
 }
 
 .form-box {
-    /* background-image: linear-gradient(rgba(0, 0, 0, 1),rgba(79, 83, 98, 1),rgba(79, 83, 98, 0)); */
     background: linear-gradient(180deg, #4F5362 0%, rgba(79, 83, 98, 0) 100%);
     border-radius: 16px;
     backdrop-filter: blur(5px);
@@ -63,4 +56,9 @@ nav {
 .image{
     width: 50px;
     height: 50px;
+}
+/* for card statistique  */
+.card{
+  background-color: rgba(68, 97, 152, 0.64);
+
 }

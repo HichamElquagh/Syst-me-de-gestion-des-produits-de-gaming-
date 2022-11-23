@@ -26,37 +26,37 @@
                               </a>
                           </li>
                           <li>
-                          <a href="logout.php" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                              <i class="fa-solid fa-right-from-bracket "></i></i> <span
-                                  class="ms-1 d-none d-sm-inline text-light">Logout </span>
-                          </a>
+                          <a href="logout.php" class="nav-link px-0 align-middle">
+                            <i class="fa-solid fa-right-from-bracket "></i></i> <span
+                                class=" side-h ms-1 d-none d-sm-inline text-light">Logout </span>
+                            </a>
                           </li>
                       </ul>
                   </div>
               </div>
-
+              
               <div class=" my-5 mx-5 col-7 ">
                   <div class="  card  my-4 ">
                     <div class="card-body">
-                      <h5 class=" text-center text-dark fs-2 card-title">Total Product  :  <?php conter (1) ?></h5> 
+                      <h5 class="  text-light fs-2 card-title">Total Product  :  <?php conter (1) ?></h5> 
                     </div>
                   </div>
 
                   <div class="card my-4">
                     <div class="card-body">
-                      <h5 class=" text-center text-dark fs-2  card-title">Total users :  <?php conter (2) ?></h5>
+                      <h5 class="  text-light fs-2  card-title">Total users :  <?php conter (2) ?></h5>
                     </div>
                   </div>
 
                   <div class="card">
                     <div class="card-body">
-                      <h5 class=" text-center text-dark fs-2 card-title">Total price : <?php conter (3) ?> $ </h5>
+                      <h5 class=" text-light fs-2 card-title">Max price : <?php conter (3) ?> $ </h5>
                     </div>
                   </div>
 
                   <div class="card my-4">
                     <div class="card-body">
-                      <h5 class=" text-center text-dark fs-2 card-title"> Quantité  : <?php conter (4) ?> $ </h5>
+                      <h5 class= " text-light fs-2 card-title"> Quantité  : <?php conter (4) ?>  </h5>
                     </div>
                   </div>
             </div> 

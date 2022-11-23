@@ -123,11 +123,26 @@ function update()
     $description = $_POST['DESCRIPTION'];
     $quantite = $_POST['QUANTITE'];
     $price = $_POST['PRICE'];
-    $sql = "UPDATE products SET name = '$name', category_id = '$category', description = '$description', price = '$price', quantite = '$quantite'
-     WHERE id = '$id' ";
-    $result = mysqli_query($conn, $sql);
+    $image = $_FILES['image']['name'];
+    if (!empty($image)){
+        $pathimage = $_FILES['image']['tmp_name'];
+        $folder= "../pages/images/".$image; 
+        $sql = "UPDATE products SET name = '$name', category_id = '$category', description = '$description', price = '$price', quantite = '$quantite', image = '$image'
+        WHERE id = '$id' ";  
+       $result = mysqli_query($conn, $sql);
+       move_uploaded_file($pathimage,$folder);
+       header('location:pages/dashbord.php');
+    }
+    else {
+        $sql = "UPDATE products SET name = '$name', category_id = '$category', description = '$description', price = '$price', quantite = '$quantite'
+        WHERE id = '$id' ";
+       $result = mysqli_query($conn, $sql);
+   
+       header('location:pages/dashbord.php');
+    }
+    
 
-    header('location:pages/dashbord.php');
+   
 
 }
 function delete()
@@ -156,7 +171,7 @@ function conter ($count)
             echo $rows['ids'] ;
     }
     elseif ($count == 3){  
-            $sql="SELECT sum(price) AS prices FROM products ";
+            $sql="SELECT max(price) AS prices FROM products ";
             $result=mysqli_query($conn,$sql);
             $rows=  mysqli_fetch_assoc($result);
             echo $rows['prices'] ;

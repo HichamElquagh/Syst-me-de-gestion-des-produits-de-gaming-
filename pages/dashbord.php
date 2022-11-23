@@ -1,7 +1,8 @@
 <?php
 $title='Dashboard';
 include '../navbar.php';
- $title="Statistique";
+
+ $title="Dashboard";
 
 
 
@@ -37,8 +38,8 @@ include '../navbar.php';
             </div>
         </div>
         <div class="col w-100 py-3 px-3 table-responsive">
-            <div class="d-felx justify-content-end mt-4">
-                <button class="btn btn-dark px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
+            <div class="  mt-4">
+                <button class="btn mb-3 float-end btn-dark px-4 rounded-pill btn-cart" id="btntask" data-bs-toggle="modal"
                 data-bs-target="#modal"><i class="fa fa-plus"></i> Add Product </a>
             </div>
             <table class=" my-3 table bg-light">
